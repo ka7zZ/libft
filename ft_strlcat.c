@@ -6,11 +6,12 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 16:31:19 by aghergut          #+#    #+#             */
-/*   Updated: 2024/01/29 16:35:40 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/01/31 19:19:13 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 size_t	ft_strlcat(char	*dst, const char	*src, size_t size)
 {
 	size_t	i;

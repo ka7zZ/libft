@@ -6,11 +6,11 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:32:16 by aghergut          #+#    #+#             */
-/*   Updated: 2024/01/31 13:26:09 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/01/31 19:11:35 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 void	bzero(void *s, size_t n)
 {

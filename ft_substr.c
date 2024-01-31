@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aghergut <aghergut@student.42madrid>       +#+  +:+       +#+        */
+/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:10:12 by aghergut          #+#    #+#             */
-/*   Updated: 2024/01/22 16:40:42 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/01/31 19:18:00 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
@@ -30,15 +32,5 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		substr[i] = '\0';
 		return(substr);
 	}
-	return(0);
-}
-
-int	main(void)
-{
-	const char	*s = "abracadabra";
-	unsigned int	start = 3;
-	size_t len = 11;
-
-	printf("%s\n", ft_substr(s, start, len));
 	return(0);
 }
