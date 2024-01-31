@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:46:30 by aghergut          #+#    #+#             */
-/*   Updated: 2024/01/31 19:19:58 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/01/31 20:26:30 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 int ft_atoi(char *s);
 void	bzero(void *s, size_t n);
-void	*calloc(size_t n, size_t size);
+void	*ft_calloc(size_t n, size_t size);
 int	ft_isalnum(int c);
 int	ft_isalpha(int c);
 int	ft_isascii(int c);

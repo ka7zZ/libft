@@ -6,12 +6,12 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:29:04 by aghergut          #+#    #+#             */
-/*   Updated: 2024/01/31 19:19:35 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/01/31 20:31:03 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+/*
 void    *function(int idx, char *s)
 {
 	printf("The char: %c have the index: %d\n", *s, idx);
@@ -35,3 +35,4 @@ int	main(void)
 	ft_striteri(s, printString);
 	return(0);
 }
+*/
