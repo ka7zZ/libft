@@ -6,9 +6,11 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:34:23 by aghergut          #+#    #+#             */
-/*   Updated: 2024/01/22 14:07:40 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/01/31 19:13:04 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {

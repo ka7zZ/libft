@@ -6,13 +6,9 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:34:20 by aghergut          #+#    #+#             */
-/*   Updated: 2024/01/15 15:31:13 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/01/31 20:24:08 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_itoa(int value)
-{
-	unsigned char	*number;
+#include "libft.h"
 
-	number = malloc()
-}

@@ -1,6 +1,16 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/31 18:58:07 by aghergut          #+#    #+#             */
+/*   Updated: 2024/01/31 20:23:46 by aghergut         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 // Function for count the total splits:
 int	count_arrays(char *str, char c)
@@ -120,20 +130,4 @@ char	**ft_split(char *str, char c)
     // Set END Character of array;
     splits[arr_pointer + 1] = '\0';
 	return (splits);
-}
-
-int	main(void)
-{
-	char	*str_to_split = "am ajuns acasa si fac supa";
-	char	**split;
-
-	split = ft_split(str_to_split, 's');
-	while (*split)
-	{
-		printf("%s\n", *split);
-		split++;
-	}
-	while (*split)
-		free(*split);
-	return (0);
 }
