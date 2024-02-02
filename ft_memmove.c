@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:34:32 by aghergut          #+#    #+#             */
-/*   Updated: 2024/01/31 19:37:45 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/02/02 00:29:59 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 char	*ft_memmove(void *dst, const void *src, size_t n)
 {
-	unsigned char	*castS;
-	unsigned char	*castD;
-	size_t	i;
+	unsigned char	*cast_src;
+	unsigned char	*cast_dst;
+	size_t			i;
 
 	i = 0;
-	castS = (unsigned char *)src;
-	castD = (unsigned char *)dst;
+	cast_src = (unsigned char *)src;
+	cast_dst = (unsigned char *)dst;
 	if (dst == src)
 		return (dst);
 	while (i < n)
 	{
-		castD[i] = castS[i];
-		i++;	
+		cast_dst[i] = cast_src[i];
+		i++;
 	}
-	return (dst = castD);
+	return (dst = cast_dst);
 }

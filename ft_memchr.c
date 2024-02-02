@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:34:23 by aghergut          #+#    #+#             */
-/*   Updated: 2024/01/31 19:13:04 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/02/02 00:17:54 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	unsigned char	*res;
-	size_t	i;
+	size_t			i;
 
 	i = 0;
 	res = (unsigned char *)s;
@@ -25,5 +25,5 @@ void	*ft_memchr(const void *s, int c, size_t n)
 			return (res + i);
 		i++;
 	}
-	return (0);;
+	return (0);
 }
