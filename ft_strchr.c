@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 15:15:18 by aghergut          #+#    #+#             */
-/*   Updated: 2024/02/02 01:03:37 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/02/09 15:05:00 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ char	*ft_strchr(const char *str, int ch)
 			return (res + i);
 		i++;
 	}
+	if (res[i] == ch)
+		return (res + i);
 	return (0);
 }

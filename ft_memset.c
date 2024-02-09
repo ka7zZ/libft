@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:34:34 by aghergut          #+#    #+#             */
-/*   Updated: 2024/02/02 00:28:23 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/02/09 13:25:07 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	*ft_memset(void *str, int c, size_t n)
 	unsigned char	*c_str;
 	size_t			i;
 
-	if (str == NULL)
-		return (NULL);
 	c_str = (unsigned char *)str;
 	i = 0;
 	while (i < n)
