@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:43:16 by aghergut          #+#    #+#             */
-/*   Updated: 2024/02/02 00:44:30 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/02/12 17:45:00 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	ft_atoi(char *str)
 	int	kind;
 
 	number = 0;
+	kind = 0;
 	while ((*str >= 9 && *str <= 13) || *str == 32)
 		str++;
 	if (*str == '-')
@@ -24,10 +25,7 @@ int	ft_atoi(char *str)
 		str++;
 	}
 	else if (*str == '+')
-	{
-		kind = 0;
 		str++;
-	}
 	while (*str >= '0' && *str <= '9')
 	{
 		number *= 10;

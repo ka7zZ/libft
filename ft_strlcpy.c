@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 16:20:59 by aghergut          #+#    #+#             */
-/*   Updated: 2024/02/09 16:01:43 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/02/12 17:07:46 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 
 	i = 0;
 	len = ft_strlen(src);
-	if (len == 0)
-		return (0);
 	while (i + 1 < size && src[i] != '\0')
 	{
 		dst[i] = src[i];
