@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:46:30 by aghergut          #+#    #+#             */
-/*   Updated: 2024/02/12 18:00:43 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:54:16 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include <stdio.h>
 
-int		ft_atoi(char *s);
+int		ft_atoi(const char *s);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t n, size_t size);
 int		ft_isalnum(int c);

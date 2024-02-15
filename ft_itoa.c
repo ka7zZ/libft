@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:34:20 by aghergut          #+#    #+#             */
-/*   Updated: 2024/02/13 17:11:14 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/02/14 11:45:29 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,13 @@
 static int	v_length(int value)
 {
 	int	len;
-	int	temp;
 
 	len = 1;
 	if (value < 10)
 		return (len);
-	temp = value;
-	while (temp > 9)
+	while (value > 9)
 	{
-		temp /= 10;
+		value /= 10;
 		len++;
 	}
 	return (len);
@@ -63,7 +61,7 @@ char	*positive(int len, int value)
 	return (number);
 }
 
-char	*ft_itoa(int value)	
+char	*ft_itoa(int value)
 {
 	int		len;
 	int		kind;
@@ -78,7 +76,7 @@ char	*ft_itoa(int value)
 		len = v_length(value);
 		min = negative(len, value);
 		min[len] = '8';
-		return (min); 
+		return (min);
 	}
 	kind = 1;
 	if (value < 0)

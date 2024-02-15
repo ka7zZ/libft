@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:58:07 by aghergut          #+#    #+#             */
-/*   Updated: 2024/02/13 17:50:32 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:03:55 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,46 +23,46 @@ int	count_arrays(char *str, char c)
 	{
 		if (str[i] == c)
 			word++;
+		if (i == (int)ft_strlen(str) - 1 && str[i] == c)
+			word --;
 		i++;
 	}
 	return (word);
 }
 
+static char	**assign(char **sp, int sp_i, char *s, char c, int f, int s_i)
+{
+	char	*cstr;
+
+	cstr = s;
+	while (*s != '\0')
+	{
+		if (*s == c && s_i == 0)
+		{
+			s++;
+			s_i++;
+			f++;
+		}
+		if (*s == c && s_i != (int)ft_strlen(cstr) - 1)
+		{
+			sp[sp_i] = ft_substr(s, f, s_i - f);
+			f = s_i + 1;
+			sp_i++;
+		}
+		s_i++;
+		s++;
+	}
+	sp[sp_i] = ft_substr(s, f, s_i - f);
+	return (sp);
+}
+
 char	**ft_split(char *str, char c)
 {
 	char	**splits;
-	int		arr_pointer;
-	int		arr_idx;
-	int		str_idx;
-	int		start_idx;
-	int		length;
 
-	splits = (char **) malloc((count_arrays(str, c) + 1) * sizeof(char *));
+	splits = (char **) ft_calloc((count_arrays(str, c) + 1), sizeof(char *));
 	if (!splits)
 		return (NULL);
-	arr_pointer = 0;
-	arr_idx = 0;
-	str_idx = 0;
-	start_idx = 0;
-	while (*str != '\0')
-	{
-		if (*str == c && str_idx == 0)
-		{
-			str++;
-			str_idx++;
-			start_idx++;
-		}
-		if (*str == c)
-		{
-			length = str_idx - start_idx;
-			splits[arr_pointer] = ft_substr(str, start_idx, length);
-			start_idx = str_idx + 1;
-			arr_pointer++;
-		}
-		arr_idx = 0;
-		str_idx++;
-		str++;
-	}
-	splits[arr_pointer] = '\0';
+	splits = assign(splits, 0, str, 0, 0, 0);
 	return (splits);
 }
