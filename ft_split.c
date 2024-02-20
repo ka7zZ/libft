@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:58:07 by aghergut          #+#    #+#             */
-/*   Updated: 2024/02/16 12:43:36 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/02/20 13:29:54 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ char	**ft_split(char *str, char c)
 	i = 0;
 	splits = (char **) ft_calloc((count_arrays(str, c) + 1), sizeof(char *));
 	if (!splits)
-		return (NULL);
+		return (0);
 	if (str[i] == '\0')
 		return (splits);
 	splits = assign(splits, 0, str, c, 0, 0);

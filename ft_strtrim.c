@@ -5,70 +5,81 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 19:18:07 by aghergut          #+#    #+#             */
-/*   Updated: 2024/02/16 14:29:41 by aghergut         ###   ########.fr       */
+/*   Created: 2024/02/19 12:22:05 by aghergut          #+#    #+#             */
+/*   Updated: 2024/02/20 12:26:54 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	back_times(char const *s1, char const *set, int s1_len, int set_len)
+static int	back_idx(char const *s1, char const *set, int s1_len, int set_len)
 {
 	int	test;
 
 	test = 0;
 	while (s1_len >= 0)
 	{
-		while (set[set_len] == s1[s1_len])
+		while (set_len >= 0)
 		{
-			test++;
-			s1_len--;
+			if (set[set_len] == s1[s1_len])
+				test++;
 			set_len--;
 		}
+		if (test == 0)
+			return (s1_len);
+		test = 0;
 		set_len = ft_strlen(set) - 1;
-		if (s1[s1_len] != set[set_len])
-			s1_len = -1;
+		s1_len--;
 	}
-	test = test / ft_strlen(set);
-	return (test);
+	return (0);
 }
 
-static int	front_times(char const *s1, char const *set, int s1_i, int set_i)
+static int	front_idx(char const *s1, char const *set, int s1_i, int set_i)
 {
 	int	test;
 	int	s1_len;
 
 	test = 0;
-	s1_len = ft_strlen(s1);
+	s1_len = ft_strlen(s1) - 1;
 	while (s1_len >= 0)
 	{
-		while (set[set_i] == s1[s1_i])
+		while (set_i < (int) ft_strlen(set))
 		{
-			test++;
-			s1_i++;
+			if (set[set_i] == s1[s1_i])
+				test++;
 			set_i++;
 		}
 		set_i = 0;
-		if (s1[s1_i] != set[set_i])
-			s1_len = -1;
+		if (test == 0)
+			return (s1_i);
+		test = 0;
+		s1_i++;
+		s1_len--;
 	}
-	test = test / ft_strlen(set);
-	return (test);
+	return (0);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*res;
-	int		front_idx;
-	int		back_idx;
-	int		temp;
+	int		new_len;
+	int		s1_len;
+	int		set_len;
+	int		f_idx;
+	int		b_idx;
 
-	front_idx = front_times(s1, set, 0, 0) * (int) ft_strlen(set);
-	temp = back_times(s1, set, (int) ft_strlen(s1), (int) ft_strlen(set));
-	back_idx = ft_strlen(s1) - temp * ft_strlen(set);
-	temp = back_idx - front_idx;
-	res = ft_substr(s1, front_idx, temp);
-	if (res == NULL)
+	s1_len = (int) ft_strlen(s1) - 1;
+	set_len = (int) ft_strlen(set) - 1;
+	f_idx = front_idx(s1, set, 0, 0);
+	b_idx = back_idx(s1, set, s1_len, set_len);
+	new_len = b_idx - f_idx + 1;
+	if (f_idx == 0 && b_idx == 0)
+	{
+		res = ft_substr(s1, 0, 0);
+		return (res);
+	}
+	res = ft_substr(s1, front_idx(s1, set, 0, 0), new_len);
+	if (!res)
 		return (NULL);
 	return (res);
 }

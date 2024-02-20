@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:34:20 by aghergut          #+#    #+#             */
-/*   Updated: 2024/02/14 11:45:29 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:29:14 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ char	*negative(int len, int value)
 	char	*number;
 
 	number = ft_calloc((len + 2), sizeof(char));
-	if (number == NULL)
-		return (NULL);
+	if (!number)
+		return (0);
 	while (len > 0)
 	{
 		number[len] = (value % 10) + '0';
@@ -49,8 +49,8 @@ char	*positive(int len, int value)
 	char	*number;
 
 	number = ft_calloc((len + 1), sizeof(char));
-	if (number == NULL)
-		return (NULL);
+	if (!number)
+		return (0);
 	len--;
 	while (len >= 0)
 	{
@@ -70,8 +70,8 @@ char	*ft_itoa(int value)
 	if (value == -2147483648)
 	{
 		min = ft_calloc(12, sizeof(char));
-		if (min == NULL)
-			return (NULL);
+		if (!min)
+			return (0);
 		value = (value + 1) * -1;
 		len = v_length(value);
 		min = negative(len, value);

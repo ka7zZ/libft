@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:50:14 by aghergut          #+#    #+#             */
-/*   Updated: 2024/02/13 11:41:09 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/02/20 12:29:18 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 char	*ft_strrchr(const char *str, int ch)
 {
 	char	*res;
-	char	c;
 	int		i;
 	int		last;
+	char	c;
 
 	res = (char *) str;
-	c = (char) ch;
 	i = 0;
 	last = 0;
+	c = ch;
 	while (res[i] != '\0')
 	{
 		if (res[i] == c)
@@ -31,9 +31,9 @@ char	*ft_strrchr(const char *str, int ch)
 	}
 	if (last > 0)
 		return (res + last);
-	else if (res[i] == ch)
+	else if (res[i] == c)
 		return (res + i);
-	else if (res[0] == ch)
+	else if (res[0] == c)
 		return (res);
 	return (NULL);
 }
