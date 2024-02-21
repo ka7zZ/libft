@@ -6,9 +6,11 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:58:07 by aghergut          #+#    #+#             */
-/*   Updated: 2024/02/20 13:29:54 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:17:32 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 #include "libft.h"
 

@@ -5,87 +5,78 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 16:34:20 by aghergut          #+#    #+#             */
-/*   Updated: 2024/02/19 10:29:14 by aghergut         ###   ########.fr       */
+/*   Created: 2024/02/21 13:31:15 by aghergut          #+#    #+#             */
+/*   Updated: 2024/02/21 13:33:31 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	v_length(int value)
+static int    v_length(int value)
 {
-	int	len;
+    int    len;
 
-	len = 1;
-	if (value < 10)
-		return (len);
-	while (value > 9)
-	{
-		value /= 10;
-		len++;
-	}
-	return (len);
+    len = 1;
+    if (value < 10)
+        return (len);
+    while (value > 9)
+    {
+        value /= 10;
+        len++;
+    }
+    return (len);
 }
 
-char	*negative(int len, int value)
+char    *v_str(int len, int value, int kind)
 {
-	char	*number;
+    char    *number;
 
-	number = ft_calloc((len + 2), sizeof(char));
-	if (!number)
-		return (0);
-	while (len > 0)
+    if (kind == 0)
+        number = ft_calloc((len + 2), sizeof(char));
+    else
 	{
-		number[len] = (value % 10) + '0';
-		value /= 10;
+        number = ft_calloc((len + 1), sizeof(char));
 		len--;
 	}
-	number[len] = '-';
-	return (number);
+    if (!number)
+        return (0);
+    while (len >= 0)
+    {
+        if (len == 0 && kind == 0)
+        {
+            number[len] = '-';
+            return (number);
+        }
+        number[len] = (value % 10) + '0';
+        value /= 10;
+        len--;
+    }
+    return (number);
 }
 
-char	*positive(int len, int value)
+static char *v_min(int len, int value)
 {
-	char	*number;
+    char    *min;
 
-	number = ft_calloc((len + 1), sizeof(char));
-	if (!number)
-		return (0);
-	len--;
-	while (len >= 0)
-	{
-		number[len] = (value % 10) + '0';
-		value /= 10;
-		len--;
-	}
-	return (number);
+    min = calloc(12, sizeof(char));
+    if (!min)
+        return (0);
+    min = v_str(len, value, 0);
+    min[len] = '8';
+    return (min);
 }
 
-char	*ft_itoa(int value)
+char    *ft_itoa(int value)
 {
-	int		len;
-	int		kind;
-	char	*min;
-
-	if (value == -2147483648)
-	{
-		min = ft_calloc(12, sizeof(char));
-		if (!min)
-			return (0);
-		value = (value + 1) * -1;
-		len = v_length(value);
-		min = negative(len, value);
-		min[len] = '8';
-		return (min);
-	}
-	kind = 1;
-	if (value < 0)
-	{
-		kind = 0;
-		value *= -1;
-	}
-	len = v_length(value);
-	if (kind == 0)
-		return (negative(len, value));
-	return (positive(len, value));
+    if (value == -2147483648)
+    {
+      value = (value + 1) * -1;
+      return (v_min(v_length(value), value));
+    }
+    if (value < 0)
+    {
+        value *= -1;
+        return (v_str(v_length(value), value, 0));
+    }
+    return(v_str(v_length(value), value, 1));
 }
