@@ -6,30 +6,26 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:58:07 by aghergut          #+#    #+#             */
-/*   Updated: 2024/02/21 17:17:32 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:19:13 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-#include "libft.h"
-
-int	count_arrays(char *str, char c)
+static size_t	count_arrays(char *str, char c)
 {
 	int	word;
-	int	last_idx;
 
 	word = 0;
-	last_idx = (int)ft_strlen(str) - 1;
 	while (*str)
 	{
-		if (*str == (char) NULL)
+		if (!*str)
 			return (word);
 		while (*str == c)
 			str++;
-		if (*str != (char) NULL)
+		if (*str)
 			word++;
-		while (*str != c && *str != (char) NULL)
+		while (*str != c && *str)
 			str++;
 	}
 	return (word);
@@ -86,7 +82,7 @@ char	**ft_split(char *str, char c)
 	int		i;
 
 	i = 0;
-	splits = (char **) ft_calloc((count_arrays(str, c) + 1), sizeof(char *));
+	splits = (char **) ft_calloc(((int) count_arrays(str, c) + 1), sizeof(char *));
 	if (!splits)
 		return (0);
 	if (str[i] == '\0')

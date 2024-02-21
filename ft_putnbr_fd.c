@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 14:56:31 by aghergut          #+#    #+#             */
-/*   Updated: 2024/02/21 14:25:19 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:08:56 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_putnbr_fd(int n, int fd)
 {
 	char	c;
-	
+
 	if (n == -2147483648)
 		write(fd, "-2147483648", 11);
 	else if (n < 0)

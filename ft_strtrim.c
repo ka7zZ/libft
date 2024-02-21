@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 12:22:05 by aghergut          #+#    #+#             */
-/*   Updated: 2024/02/21 11:45:13 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:13:24 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,23 +62,19 @@ static int	front_idx(char const *s1, char const *set, int s1_i, int set_i)
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*res;
-	int		new_len;
 	int		s1_len;
-	int		set_len;
 	int		f_idx;
 	int		b_idx;
 
 	s1_len = (int) ft_strlen(s1) - 1;
-	set_len = (int) ft_strlen(set) - 1;
 	f_idx = front_idx(s1, set, 0, 0);
-	b_idx = back_idx(s1, set, s1_len, set_len);
-	new_len = b_idx - f_idx + 1;
+	b_idx = back_idx(s1, set, s1_len, (int) ft_strlen(set) - 1);
 	if (f_idx == 0 && b_idx == 0)
 	{
 		res = ft_substr(s1, 0, 0);
 		return (res);
 	}
-	res = ft_substr(s1, front_idx(s1, set, 0, 0), new_len);
+	res = ft_substr(s1, front_idx(s1, set, 0, 0), b_idx - f_idx + 1);
 	if (!res)
 		return (NULL);
 	return (res);

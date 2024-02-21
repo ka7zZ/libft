@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:46:30 by aghergut          #+#    #+#             */
-/*   Updated: 2024/02/21 14:22:42 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:14:19 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr_fd(char *str, int fd);
 char	**ft_split(char *str, char c);
 char	*ft_strchr(const char *str, int ch);
-char    *ft_strdup(const char *s);
+char	*ft_strdup(const char *s);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlcat(char	*dst, const char	*src, size_t size);
