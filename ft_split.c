@@ -6,13 +6,13 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:58:07 by aghergut          #+#    #+#             */
-/*   Updated: 2024/02/21 18:19:13 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/02/22 17:05:47 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	count_arrays(char *str, char c)
+static int	count_arrays(char *str, char c)
 {
 	int	word;
 
@@ -31,48 +31,38 @@ static size_t	count_arrays(char *str, char c)
 	return (word);
 }
 
-static void	free_memory(char **s)
+static void	free_memory(char **s, int pos)
 {
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] == NULL)
-			free(s[i]);
-		i++;
-	}
+	while (pos > 0)
+		free(s[pos--]);
+	free(s);
 }
 
-static char	**assign(char **sp, int sp_i, char *s, char c, int f, int s_i)
+static char	**assign(char **sp, int pos, char *s, char c)
 {
-	char	*cstr;
+	size_t		sub_len;
+	size_t		start;
 
-	cstr = s;
-	while (*s)
+	start = 0;
+	while (start < ft_strlen(s))
 	{
-		while (*s == c)
+		sub_len = 0;
+		while (s[start] != c && s[start] != 0)
 		{
-			s_i++;
-			f++;
-			s++;
+			sub_len++;
+			start++;
 		}
-		while (*s != c && s_i < (int) ft_strlen(cstr) - 1 && *s != (char) NULL)
+		start++;
+		if ((s[start - 1] == c && sub_len > 0) || start - 1 == ft_strlen(s))
 		{
-			s_i++;
-			s++;
+			sp[pos] = ft_substr(s, start - sub_len - 1, sub_len);
+			if (s[pos++] == 0)
+			{
+				free_memory(sp, pos - 1);
+				return (NULL);
+			}
 		}
-		if (*s == c)
-		{
-			sp[sp_i] = ft_substr(cstr, f, s_i - f);
-			f = s_i + 1;
-			sp_i++;
-		}
-		s_i++;
-		s++;
 	}
-	if (s_i == (int) ft_strlen(cstr))
-		sp[sp_i] = ft_substr(cstr, f, s_i - f);
 	return (sp);
 }
 
@@ -80,14 +70,15 @@ char	**ft_split(char *str, char c)
 {
 	char	**splits;
 	int		i;
+	int		words;
 
 	i = 0;
-	splits = (char **) ft_calloc(((int) count_arrays(str, c) + 1), sizeof(char *));
+	words = count_arrays(str, c);
+	splits = (char **) ft_calloc(words + 1, sizeof(char *));
 	if (!splits)
 		return (0);
 	if (str[i] == '\0')
 		return (splits);
-	splits = assign(splits, 0, str, c, 0, 0);
-	free_memory(splits);
+	splits = assign(splits, 0, str, c);
 	return (splits);
 }
