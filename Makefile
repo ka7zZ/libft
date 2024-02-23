@@ -6,7 +6,7 @@
 #    By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/22 13:11:03 by aghergut          #+#    #+#              #
-#    Updated: 2024/02/15 11:47:37 by aghergut         ###   ########.fr        #
+#    Updated: 2024/02/23 17:17:24 by aghergut         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
 NAME = libft.a
+MAIN = exec
 
 SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
        ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c \
@@ -22,14 +23,17 @@ SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
        ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c \
        ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c \
        ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c \
-       ft_putnbr_fd.c ft_atoi.c
+       ft_putnbr_fd.c ft_atoi.c main.c
 OBJS = $(SRCS:.c=.o)
 
-all: $(NAME)
+all: $(NAME) $(MAIN)
 
 $(NAME): $(OBJS)
 	@ar -rcs $(NAME) $(OBJS)
 
+$(MAIN): $(OBJS)
+	@$(CC) $(CFLAGS) -o $(MAIN) main.o -L. -lft
+	
 %.o: %.c
 	@mkdir -p $(dir (OBJS))
 	@echo "Compiling $< ..."
@@ -40,7 +44,7 @@ clean:
 	rm -Rf $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(MAIN)
 
 re: fclean all
 
