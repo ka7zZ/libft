@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 18:46:30 by aghergut          #+#    #+#             */
-/*   Updated: 2024/02/21 18:14:19 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/02/26 15:59:32 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 #endif

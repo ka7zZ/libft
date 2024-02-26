@@ -3,10 +3,18 @@
 #include <stdio.h>
 #include <string.h>
 
-char	*my_tolower(unsigned int i, char *str)
+void	my_tolower(unsigned int i, char *str)
 {
-	str[i] = str[i] + 32;
-	return (str);
+	char	ch;
+
+	ch = str[i];
+	str[i] = ft_tolower(ch);
+}
+
+char	mapi_func(unsigned int i, char ch)
+{
+	ch += i;
+	return (ch);
 }
 
 int main(int argsc, char **argsv)
@@ -19,33 +27,27 @@ int main(int argsc, char **argsv)
 	char	test_char;
 	char	ch;
 	char	*test_string;
+	char    *test_string2;
 	char	*test_func;
+	char	*input_function;
 	char	**split_case;
 
 	if (argsc < 2)
-	{
-		printf("\nPlease insert correct input!\n");
 		return (1);
-	}
-	printf("%d\n", argsc);
-	i = 0;
-	test_char = 0;
-	test_func = NULL;
-	test_int = 0;
-	test_string = NULL;
-	if (strcmp((char *) argsv[1], "ft_atoi") == 0)
+	input_function = argsv[1];
+	if (strcmp(input_function, "ft_atoi") == 0)
 	{
 		test_int = ft_atoi(argsv[2]);
-		printf("%d\n", test_int);
+		printf("Number is: %d\n", test_int);
 	}
-	else if (strcmp((char *) argsv[1], "ft_bzero") == 0)
+	else if (strcmp(input_function, "ft_bzero") == 0)
 	{
-		test_func = (char *) argsv[2];
-		test_string = (char *) argsv[2];
+		test_string = argsv[2];
+		printf("String: '%s'", test_string);
 		ft_bzero(test_string, ft_strlen(test_string));
-		printf("String: '%s' is now %s\n", test_func, test_string);
+		printf("is now: '%s' (null setted).\n", test_string);
 	}
-	else if (strcmp((char *) argsv[1],"ft_calloc") == 0)
+	else if (strcmp(input_function, "ft_calloc") == 0)
 	{
 		test_string = (char *) ft_calloc(ft_atoi(argsv[2]), ft_atoi(argsv[3]));
 		while (i < ft_atoi(argsv[2]))
@@ -55,243 +57,272 @@ int main(int argsc, char **argsv)
 		}
 		printf("Result: %s\n", test_string);
 	}
-	else if (strcmp((char *) argsv[1], "ft_isalnum") == 0)
+	else if (strcmp(input_function, "ft_isalnum") == 0)
 	{
-		test_int = ft_atoi(argsv[2]);
-		test_char = (char) test_int;
-		if (ft_isalnum(test_char) == 1)
+		test_char = argsv[2][0];
+		if (ft_isalnum((int) test_char) == 1)
 			printf("The char '%c' is alphanumeric character\n", test_char);
-		printf("The char '%c' is not alphanumeric character\n", test_char);
+		else
+			printf("The char '%c' is not alphanumeric character\n", test_char);
 	}
-	else if (strcmp((char *) argsv[1], "ft_isalpha") == 0)
+	else if (strcmp(input_function, "ft_isalpha") == 0)
 	{
-		test_int = ft_atoi(argsv[2]);
-		test_char = (char) test_int;
-		if (ft_isalnum(test_char) == 1)
+		test_char = argsv[2][0];
+		if (ft_isalpha((int) test_char) == 1)
 			printf("The char '%c' is an alphabetical character\n", test_char);
-		printf("The char '%c' is not an alphabetical character\n", test_char);
+		else
+			printf("The char '%c' is not an alphabetical character\n", test_char);
 	}
-	else if (strcmp((char *) argsv[1], "ft_isascii") == 0)
+	else if (strcmp(input_function, "ft_isascii") == 0)
 	{
-		test_int = ft_atoi(argsv[2]);
-		test_char = (char) test_int;
-		if (ft_isalnum(test_char) == 1)
+		test_char = argsv[2][0];
+		if (ft_isascii((int) test_char) == 1)
 			printf("The char '%c' is withing ASCII table\n", test_char);
-		printf("The char '%c' is not withing ASCII table\n", test_char);
+		else
+			printf("The char '%c' is not withing ASCII table\n", test_char);
 	}
-	else if (strcmp((char *) argsv[1], "ft_isdigit") == 0)
+	else if (strcmp(input_function, "ft_isdigit") == 0)
 	{
-		test_int = ft_atoi(argsv[2]);
-		test_char = (char) test_int;
-		if (ft_isalnum(test_char) == 1)
+		test_char = argsv[2][0];
+		if (ft_isdigit((int) test_char) == 1)
 			printf("The char '%c' is a number\n", test_char);
-		printf("The char '%c' is not number\n", test_char);
+		else
+			printf("The char '%c' is not number\n", test_char);
 	}
-	else if (strcmp((char *) argsv[1], "ft_isprint") == 0)
+	else if (strcmp(input_function, "ft_isprint") == 0)
 	{
-		test_int = ft_atoi(argsv[2]);
-		test_char = (char) test_int;
-		if (ft_isalnum(test_char) == 1)
+		test_char = argsv[2][0];
+		if (ft_isprint((int) test_char) == 1)
 			printf("The char '%c' is printable\n", test_char);
-		printf("The char '%c' is not printable\n", test_char);
+		else
+			printf("The char '%c' is not printable\n", test_char);
 	}
-	else if (strcmp((char *) argsv[1], "ft_itoa") == 0)
+	else if (strcmp(input_function, "ft_itoa") == 0)
 	{
 		test_int = ft_atoi(argsv[2]);
 		test_string = ft_itoa(test_int);
 		printf("The number %d successfully converted into string -> %s\n", test_int, test_string);
 	}
-	else if (strcmp((char *) argsv[1], "ft_memchr") == 0)
+	else if (strcmp(input_function, "ft_memchr") == 0)
 	{
-		test_string = (char *) argsv[2];
-		mem = (char) ft_atoi(argsv[3]);
+		test_string = argsv[2];
+		test_char = argsv[3][0];
+		mem = argsv[3][0];
 		test_int = ft_atoi(argsv[4]);
 		printf("String: %s\nChar: %c\nSize: %d\n\n", test_string, test_char, test_int);
-		ft_memchr(test_string, test_char, test_int);
-		printf("Result: %s\n", test_string);
+		printf("infunc: %p\n", memchr(test_string, mem, test_int));
+		printf("myfunc: %p\n", ft_memchr(test_string, mem, test_int));
 	}
-	else if (strcmp((char *) argsv[1], "ft_memcmp") == 0)
+	else if (strcmp(input_function, "ft_memcmp") == 0)
 	{
 		mem = ft_atoi(argsv[4]);
-		test_int = ft_memcmp(argsv[2], argsv[3], mem);
-		printf("String 1: %s\nString 2: %s\n\nThe result of memcmp is: %d\n", argsv[2], argsv[3], test_int);
+		printf("String 1: %s\nString 2: %s\n\n", argsv[2], argsv[3]);
+		printf("infunc: %d\n", memcmp(argsv[2], argsv[3], mem));
+		printf("myfunc: %d\n", ft_memcmp(argsv[2], argsv[3], mem));
 	}
-	else if (strcmp((char *) argsv[1], "ft_memcpy") == 0)
+	else if (strcmp(input_function, "ft_memcpy") == 0)
 	{
 		test_int = ft_atoi(argsv[4]);
-		test_string = ft_memcpy((char *) argsv[2], (char *) argsv[3], test_int);
-		printf("String1: %s\nString2: %s\nSize: %d\n\nResult: %s\n", (char *) argsv[2], (char *) argsv[3], test_int, test_string);
+		test_string = argsv[2];
+		test_string2 = argsv[2];
+		test_func = argsv[3];
+		printf("Destination string: %s\nSource string: %s\nLength to copy: %d\n\n", test_string, test_func, test_int);
+		memcpy(test_string, test_func, test_int);
+		ft_memcpy(test_string2, test_func, test_int);
+		printf("infunc: %s\nmyfunc: %s\n", test_string, test_string2);
 	}
-	else if (strcmp((char *) argsv[1], "ft_memmove") == 0)
+	else if (strcmp(input_function, "ft_memmove") == 0)
 	{
 		test_int = ft_atoi(argsv[4]);
-		test_string = ft_memmove(argsv[2], argsv[3], test_int);
-		printf("String: %s\nString: %s\nSize: %d\n\nResult: %s\n", argsv[2], argsv[3], test_int, test_string);
+		test_string = argsv[2];
+		test_string2 = argsv[2];
+		test_func = argsv[3];
+		printf("Destination string: %s\nSource string: %s\nLength to copy: %d\n\n", test_string, test_func, test_int);
+		memmove(test_string, test_func, test_int);
+		ft_memmove(test_string2, test_func, test_int);
+		printf("infunc: %s\nmyfunc: %s\n", test_string, test_string2);
 	}
-	else if (strcmp((char *) argsv[1], "ft_memset") == 0)
+	else if (strcmp(input_function, "ft_memset") == 0)
 	{
-		mem = ft_atoi(argsv[3]);
-		test_char = (char) mem;
+		test_char = argsv[3][0];
 		test_int = ft_atoi(argsv[4]);
-		test_string = ft_memset(argsv[2], test_char, test_int);
-		printf("String: %s\nChar: %c\nSize: %d\n\nResult: %s\n", argsv[2], test_char, test_int, test_string);
+		test_string = argsv[2];
+		test_string2 = argsv[2];
+		printf("String: %s\nChar: %c\nSize: %d\n\n", test_string, test_char, test_int);
+		ft_memset(test_string, test_char, test_int);
+		memset(test_string2, test_char, test_int);
+		printf("infunc: %s\nmyfunc: %s\n", test_string2, test_string);
 	}
-	else if (strcmp((char *) argsv[1], "ft_putchar_fd") == 0)
+	else if (strcmp(input_function, "ft_putchar_fd") == 0)
 	{
-		test_char = (char) ft_atoi(argsv[2]);
-		if(ft_isalpha(test_char))
+		if (argsv[2])
 		{
-			file = open("test.txt", O_CREAT | O_RDWR, 0666);
+			test_char = argsv[2][0];
+			file = open("test.txt", O_CREAT | O_RDWR | O_APPEND, 0666);
 			if (file == -1)
-				printf("Error creating the file");
+				printf("Error creating the file\n");
 			ft_putchar_fd(test_char, file);
 		}
 		else
-			printf("Wrong/Insufficient arguments");
+			printf("Not input, not result!\n");
 	}
-	else if (strcmp((char *) argsv[1], "ft_putstr_fd") == 0)
+	else if (strcmp(input_function, "ft_putstr_fd") == 0)
 	{
 		if(argsv[2])
 		{
-			file = open("test.txt", O_CREAT | O_RDWR, 0666);
+			test_string = argsv[2];
+			file = open("test.txt", O_CREAT | O_RDWR | O_APPEND, 0666);
 			if (file == -1)
 				printf("Error creating the file");
 			ft_putstr_fd(argsv[2], file);
 		}
 		else
-			printf("Insufficient arguments");
+			printf("Not input, not result!\n");
 	}
-	else if (strcmp((char *) argsv[1], "ft_putendl_fd") == 0)
+	else if (strcmp(input_function, "ft_putendl_fd") == 0)
 	{
 		if (argsv[2])
 		{
-			file = open("test.txt", O_CREAT | O_RDWR, 0666);
+			file = open("test.txt", O_CREAT | O_RDWR | O_APPEND, 0666);
 			if (file == -1)
 				printf("Error creating the file");
 			ft_putendl_fd(argsv[2], file);
 		}
 		else
-			printf("Insufficient arguments");
+			printf("Not input, not result!\n");
 	}
-	else if (strcmp((char *) argsv[1], "ft_putnbr_fd") == 0)
+	else if (strcmp(input_function, "ft_putnbr_fd") == 0)
 	{
 		if (argsv[2])
 		{
 			test_int = ft_atoi(argsv[2]);
-			file = open("test.txt", O_CREAT | O_RDWR, 0666);
+			file = open("test.txt", O_CREAT | O_RDWR | O_APPEND, 0666);
 			if (file == -1)
 				printf("Error creating the file");
 			ft_putnbr_fd(test_int, file);
 		}
 		else
-			printf("Insufficient arguments");
+			printf("Not input, not result!\n");
 	}
-	else if (strcmp((char *) argsv[1], "ft_split") == 0)
+	else if (strcmp(input_function, "ft_split") == 0)
 	{
-		test_char = (char) ft_atoi(argsv[3]);
-		split_case = ft_split(argsv[2], test_char);
+		test_char = argsv[3][0];
+		test_string = argsv[2];
+		split_case = ft_split(test_string, test_char);
 		if (!split_case)
 			return (0);
 		i = 0;
-		while (*split_case)
+		while (split_case[i] != NULL)
 		{
-			j = 0;
-			while (*split_case[j] != '\0')
-				printf("%c", *split_case[j++]);
-			printf("\n");
+			printf("%d) %s\n", i + 1, split_case[i]);
 			i++;
-			split_case++;
 		}
+		free(split_case);
+		return (0);
 	}
-	else if (strcmp((char *) argsv[1], "ft_strchr") == 0)
+	else if (strcmp(input_function, "ft_strchr") == 0)
 	{
-		test_char = (char) ft_atoi(argsv[3]);
-		test_string = ft_strchr(argsv[2], test_char);
-		printf("String: %s\nChar: %c\n\nResult: %s\n", argsv[2], test_char, test_string);
+		test_char = argsv[3][0];
+		test_string = argsv[2];
+		printf("String: %s\nChar: %c\n\n", test_string, test_char);
+		test_func = strchr(test_string, test_char);
+		printf("infunc: %s\n", test_func);
+		test_string2 = ft_strchr(test_string, test_char);
+		printf("myfunc: %s\n", test_string2);
 	}
-	else if (strcmp((char *) argsv[1], "ft_strdup") == 0)
+	else if (strcmp(input_function, "ft_strdup") == 0)
 	{
-		test_string = ft_strdup(argsv[2]);
-		printf("Result: %s\n", test_string);
+		test_string = argsv[2];
+		printf("String: %s\n", test_string);
+		test_string2 = ft_strdup(test_string);
+		printf("Result of duplication: %s\n", test_string2);
 	}
-	else if (strcmp((char *) argsv[1], "ft_strjoin") == 0)
+	else if (strcmp(input_function, "ft_strjoin") == 0)
 	{
 		test_string = ft_strjoin(argsv[2], argsv[3]);
 		printf("String1: %s\nString2: %s\n\nResult: %s\n", argsv[2], argsv[3], test_string);
 	}
-	else if (strcmp((char *) argsv[1], "ft_strlcat") == 0)
+	else if (strcmp(input_function, "ft_strlcat") == 0)
 	{
 		mem = ft_atoi(argsv[4]);
 		test_string = argsv[2];
 		test_func = argsv[3];
 		printf("String1: %s\nString2: %s\n\n", test_string, test_func);
 		test_int = ft_strlcat(test_string, test_func, mem);
-		printf("Result return strlcat: %d\n", test_int);
+		ft_strlcat(test_string, test_func, mem);
+		printf("myfunc:\nResult return strlcat: %d\n", test_int);
 		printf("Result destination string: %s\n", test_string);
 	}
-	else if (strcmp((char *) argsv[1], "ft_strlcpy") == 0)
+	else if (strcmp(input_function, "ft_strlcpy") == 0)
 	{
 		mem = ft_atoi(argsv[4]);
-		printf("Trying to copy %d chars from %s into a new variable!", mem, (char *) argsv[3]);
-		test_int = ft_strlcpy((char *) argsv[2], (char *) argsv[3], mem);
+		test_string = argsv[2];
+		printf("Trying to copy %d chars from %s into a new variable ...\n", mem, (char *) argsv[3]);
+		test_int = ft_strlcpy(test_string, argsv[3], mem);
+		ft_strlcpy(test_string, argsv[3], mem);
 		printf("Result return strlcpy: %d\n", test_int);
 		printf("Result of the new variable: %s\n", test_string);
 	}
-	else if (strcmp((char *) argsv[1], "ft_strlen") == 0)
+	else if (strcmp(input_function, "ft_strlen") == 0)
 	{
 		test_string = argsv[2];
 		printf("The length of %s is: %ld\n", test_string, ft_strlen(test_string));
 	}
-	else if (strcmp((char *) argsv[1], "ft_strncmp") == 0)
+	else if (strcmp(input_function, "ft_strncmp") == 0)
 	{
 		mem = ft_atoi(argsv[4]);
 		test_int = ft_strncmp(argsv[2], argsv[3], mem);
 		printf("The result of comparing '%s' with '%s' is: %d\n", argsv[2], argsv[3], test_int);
 	}
-	else if (strcmp((char *) argsv[1], "ft_strnstr") == 0)
+	else if (strcmp(input_function, "ft_strnstr") == 0)
 	{
 		mem = ft_atoi(argsv[4]);
 		test_string = ft_strnstr(argsv[2], argsv[3], mem);
 		printf("Haystack: %s\nNeedle: %s\n\nResult: %s\n", argsv[2], argsv[3], test_string);
 	}
-	else if (strcmp((char *) argsv[1], "ft_strrchr") == 0)
+	else if (strcmp(input_function, "ft_strrchr") == 0)
 	{
-		test_int = ft_atoi(argsv[3]);
-		test_string = ft_strrchr((char *) argsv[2], test_int);
-		printf("String: %s\nChar: %c\n\nResult: %s\n", argsv[2], test_int, test_string);
+		test_char = argsv[3][0];
+		test_string = ft_strrchr(argsv[2], test_char);
+		printf("String: %s\nChar: %c\n\nResult: %s\n", argsv[2], test_char, test_string);
 	}
-	else if (strcmp((char *) argsv[1], "ft_strtrim") == 0)
+	else if (strcmp(input_function, "ft_strtrim") == 0)
 	{
 		test_string = argsv[2];
-		if (ft_strlen(argsv[3]) > 1)
-		{
-			test_func = argsv[3];
-			printf("Trying to trimming '%s' of seq '%s'..\nResult: %s\n", test_string, test_func, ft_strtrim(test_string, test_func));
-		}
-		else
-		{
-			test_char = (char) ft_atoi(argsv[3]);
-			printf("Trying to trimming '%s' of char '%c'..\nResult: %s\n", test_string, test_char, ft_strtrim(test_string, test_func));
-		}
+		test_func = argsv[3];
+		printf("String: %s\nSequence: %s\n\nResult: %s\n", test_string, test_func, ft_strtrim(test_string, test_func));
 	}
-	else if (strcmp((char *) argsv[1], "ft_substr") == 0)
+	else if (strcmp(input_function, "ft_substr") == 0)
 	{
 		i = ft_atoi(argsv[3]);
 		j = ft_atoi(argsv[4]);
 		test_string = ft_substr(argsv[2], i, j);
-		printf("Trying to create a substring of '%s' starting from idx[%d]. The length should be %d characters", argsv[2], i, j);
-		printf("The result is: '%s'\n", test_string);
+		printf("String: %s\nFrom: [%d]\nLength: %d\n\nResult: %s\n", argsv[2], i, j, test_string);
 	}
-	else if (strcmp((char *) argsv[1], "ft_tolower") == 0)
+	else if (strcmp(input_function, "ft_tolower") == 0)
 	{
-		test_char = (char) ft_atoi(argsv[2]);
+		test_char = argsv[2][0];
 		ch = ft_tolower(test_char);
-		printf("Converting ...\n   ---- %c ----\n", ch);
+		printf("Char: %c\n\nResult: %c\n", test_char, ch);
 	}
-	else if (strcmp((char *) argsv[1], "ft_toupper") == 0)
+	else if (strcmp(input_function, "ft_toupper") == 0)
 	{
-		test_char = (char) ft_toupper((char) ft_atoi(argsv[2]));
-		printf("Converting ... \n---- %c ----\n", test_char);
+		test_char = argsv[2][0];
+		ch = ft_toupper(test_char);
+		printf("Char: %c\n\nResult: %c\n", test_char, ch);
+	}
+	else if(strcmp(input_function, "ft_striteri") == 0)
+	{
+		test_string = argsv[2];
+		ft_striteri(test_string, my_tolower);
+		printf("%s\n", test_string);
+		
+
+	}
+	else if(strcmp(input_function, "ft_strmapi") == 0)
+	{
+		test_string = argsv[2];
+		printf("Input string: %s\n\nResult: %s\n", test_string, ft_strmapi(test_string, mapi_func));
 	}
 	else
 		printf("Unkown option %s. Not in the lib\n", argsv[1]);
