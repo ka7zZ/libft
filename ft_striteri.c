@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:29:04 by aghergut          #+#    #+#             */
-/*   Updated: 2024/02/12 10:31:29 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/02/26 14:34:27 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	unsigned int	i;
+    size_t          max;
 
 	if (s && f)
 	{
 		i = 0;
-		while (*s)
+        max = ft_strlen(s);
+		while (i < max)
 		{
-			(*f)(i++, s);
-			s++;
+			(*f)(i, s);
+            i++;
 		}
 	}
 }
