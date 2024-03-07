@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 19:17:03 by aghergut          #+#    #+#             */
-/*   Updated: 2024/02/21 14:34:45 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/03/04 16:35:16 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@ char	*ft_strdup(const char *s)
 		res[i] = s[i];
 		i++;
 	}
-	res[i] = '\0';
 	return (res);
 }

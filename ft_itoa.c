@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:31:15 by aghergut          #+#    #+#             */
-/*   Updated: 2024/02/21 18:16:46 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/03/05 14:29:23 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,25 +54,10 @@ char	*v_str(int len, int value, int kind)
 	return (number);
 }
 
-char	*v_min(int len, int value)
-{
-	char	*min;
-
-	min = calloc(12, sizeof(char));
-	if (!min)
-		return (0);
-	min = v_str(len, value, 0);
-	min[len] = '8';
-	return (min);
-}
-
 char	*ft_itoa(int value)
 {
 	if (value == -2147483648)
-	{
-		value = (value + 1) * -1;
-		return (v_min(v_length(value), value));
-	}
+		return (ft_strdup("-2147483648"));
 	if (value < 0)
 	{
 		value *= -1;

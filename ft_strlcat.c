@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 16:31:19 by aghergut          #+#    #+#             */
-/*   Updated: 2024/02/13 14:37:20 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/03/01 14:56:12 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,7 @@ size_t	ft_strlcat(char	*dst, const char *src, size_t size)
 	i = ft_strlen(dst);
 	j = 0;
 	while (i < size && src[j] != '\0')
-	{
 		dst[i++] = src[j++];
-	}
 	if (len_dst + len_src >= size)
 	{
 		if (len_dst < size)

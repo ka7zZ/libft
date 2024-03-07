@@ -1,37 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 12:15:51 by aghergut          #+#    #+#             */
-/*   Updated: 2024/03/04 16:45:00 by aghergut         ###   ########.fr       */
+/*   Created: 2024/02/27 13:46:05 by aghergut          #+#    #+#             */
+/*   Updated: 2024/03/07 17:33:01 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	char				*res;
-	unsigned int		i;
+	t_list	*new;
+	t_list	*temp;
+	void	*f_content;
 
-	if (!s && !f)
+	if (!lst || !del || !f)
 		return (NULL);
-	res = ft_calloc(ft_strlen(s) + 1, sizeof(char));
-	if (!res)
-		return (NULL);
-	if (s && f)
+	new = NULL;
+	while (lst != NULL)
 	{
-		i = 0;
-		while (s[i] != '\0')
+		f_content = f(lst->content);
+		temp = ft_lstnew(f_content);
+		if (!temp)
 		{
-			res[i] = f(i, s[i]);
-			i++;
+			del(f_content);
+			ft_lstclear(&new, del);
+			return (NULL);
 		}
+		if (new == NULL)
+			new = temp;
+		else
+			ft_lstadd_back(&new, temp);
+		lst = lst->next;
 	}
-	else
-		res = NULL;
-	return (res);
+	ft_lstadd_back(&new, lst);
+	return (new);
 }

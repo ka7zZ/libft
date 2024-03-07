@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 16:10:12 by aghergut          #+#    #+#             */
-/*   Updated: 2024/02/21 18:13:52 by aghergut         ###   ########.fr       */
+/*   Updated: 2024/03/04 20:26:12 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!s || ft_strlen(s) < start)
 	{
 		res = ft_calloc(1, sizeof(char));
+		if (res == NULL)
+			return (NULL);
 		return (res);
 	}
 	if (ft_strlen(s + start) < len)
@@ -35,6 +37,5 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		res[i] = s[start + i];
 		i++;
 	}
-	res[i] = '\0';
 	return (res);
 }
